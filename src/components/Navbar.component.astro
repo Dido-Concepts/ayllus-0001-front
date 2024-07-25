@@ -1,0 +1,179 @@
+---
+import Arrow from './icons/Arrow.icon.astro'
+import { MAIN_NAV, SUB_NAV } from '@src/constantes/mapsite.const';
+---
+
+<header
+  id="header"
+  class="fixed w-full transition duration-300 ease-in-out bg-gradient-header z-40"
+>
+  <nav
+    id="navbar"
+    class="container mx-auto p-5 pt-0 sm:pt-10 flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center font-bold"
+  >
+    <div class="flex gap-4">
+      <img src="/logo/isotipo.png" alt="Isotipo" id="isotipo" class="hidden sm:block" />
+      <img
+        src="/logo/logo.png"
+        alt="Logo"
+        id="logo_ayllus"
+        class="hidden xl:block"
+      />
+    </div>
+    <div class="flex flex-col justify-between gap-8">
+      <ul class="flex justify-end items-center text-white">
+        {
+          SUB_NAV.map((item, index) => (
+            <li dir={index === 0 ? 'ltr' : 'rtl'}>
+              <a
+                href={item.url}
+                class="bg-ayllus-primary text-white text-xs sm:text-[1rem] px-8 py-1.5 rounded-s-full border-2 border-transparent hover:border-ayllus-primary hover:bg-white hover:text-ayllus-primary transition duration-300 ease-in-out"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+
+        <div
+          class="xl:hidden flex justify-end ml-8 mt-1 cursor-pointer"
+          id="hamburger-navbar"
+        >
+          <div class="hover:cursor-pointer">
+            <spnan class="h-1 rounded-full block w-8 mb-1 bg-ayllus-primary"
+            ></spnan>
+            <spnan class="h-1 rounded-full block w-8 mb-1 bg-ayllus-secondary"
+            ></spnan>
+            <spnan class="h-1 rounded-full block w-8 mb-1 bg-ayllus-primary"
+            ></spnan>
+          </div>
+        </div>
+      </ul>
+      <ul
+        id="nav-items"
+        class="lg:space-x-12 2xl:space-x-24 text-white xl:flex hidden relative"
+      >
+        {
+          MAIN_NAV.map((item) => (
+            <li class="group relative inline-block">
+              <a
+                href={item.url}
+                class="flex items-center group-hover:text-ayllus-primary hover:text-ayllus-primary"
+              >
+                {item.name}
+                <Arrow width={28} height={28} />
+              </a>
+              <div class="absolute hidden group-hover:block bg-white shadow-lg py-2 w-48 z-10 left-1/2 transform -translate-x-1/2 rounded-xl">
+                {item.sub_menu &&
+                  item.sub_menu.length > 0 &&
+                  item.sub_menu.map((subItem, index) => (
+                    <a
+                      href={subItem.url}
+                      class={`block px-4 py-2 text-gray-800 hover:bg-gray-200 ${index !== 0 && 'border-t-2 border-ayllus-primary'}`}
+                    >
+                      {subItem.name}
+                    </a>
+                  ))}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div id="trigger"></div>
+
+<div
+  id="modal"
+  class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center"
+>
+  <div class="bg-white p-8 shadow-lg w-full min-h-svh">
+    <h2 class="text-2xl mb-4">Modal Title</h2>
+    <p class="mb-4">This is a modal content.</p>
+    <button id="closeModal" class="bg-blue-500 text-white px-4 py-2 rounded"
+      >Close</button
+    >
+  </div>
+</div>
+
+<style>
+  .scrolled {
+    background-color: white;
+    box-shadow: 10px 32px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-scrolled {
+    color: #7406a7 !important;
+  }
+
+  .bg-gradient-header {
+    background: linear-gradient(to bottom, #3f0099 -100%, transparent 100%);
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.getElementById('header') as HTMLDivElement
+  const navbar = document.getElementById('navbar') as HTMLDivElement
+  const trigger = document.getElementById('trigger') as HTMLDivElement
+  const navItems = document.getElementById('nav-items')
+  const isotipo = document.getElementById('isotipo') as HTMLImageElement
+  const logoAyllus = document.getElementById(
+    'logo_ayllus'
+  ) as HTMLImageElement
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+          header!.classList.add('scrolled')
+          header!.classList.remove('bg-gradient-header')
+          navbar!.classList.remove('pt-10')
+          navItems!.classList.add('text-scrolled')
+          navItems!.classList.remove('text-white')
+          isotipo.src = '/logo/isotipo_black.png'
+          logoAyllus.src = '/logo/logo_black.png'
+      } else {
+          header!.classList.remove('scrolled')
+          header!.classList.add('bg-gradient-header')
+          navbar!.classList.add('pt-0')
+          navItems!.classList.remove('text-scrolled')
+          navItems!.classList.add('text-white')
+          isotipo.src = '/logo/isotipo.png'
+          logoAyllus.src = '/logo/logo.png'
+      }
+    })
+  })
+
+  observer.observe(trigger)
+})
+</script>
+
+<script>
+const hamburger = document.getElementById(
+  'hamburger-navbar'
+) as HTMLDivElement
+const modal = document.getElementById('modal') as HTMLDivElement
+const closeModal = document.getElementById('closeModal') as HTMLButtonElement
+
+hamburger.addEventListener('click', () => {
+  modal.classList.remove('hidden')
+  document.body.classList.add('modal-open')
+  modal.classList.add('animate-jump-out', 'animate-once', 'animate-reverse')
+
+  setTimeout(() => {
+    modal.classList.remove('animate-jump-out', 'animate-once', 'animate-reverse')
+  }, 800)
+})
+
+closeModal.addEventListener('click', () => {
+  modal.classList.add('animate-jump-out', 'animate-once')
+
+  setTimeout(() => {
+    modal.classList.add('hidden')
+    modal.classList.remove('animate-jump-out', 'animate-once')
+    document.body.classList.remove('modal-open')
+  }, 800)
+})
+</script>

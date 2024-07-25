@@ -1,0 +1,55 @@
+---
+import Maps from '@src/components/icons/Maps.icon.astro'
+
+interface Props {
+    title: string;
+    image: string;
+    address: string;
+}
+
+const { title, image, address } = Astro.props as Props;
+---
+
+<div
+    class="swiper-slide relative flex flex-col gap-5 bg-cover bg-center w-full h-64 md:h-96"
+    style={`background-image: url(${image});`}
+>
+    <div class="absolute inset-0 bg-ayllus-primary opacity-25"></div>
+    <h1
+        class="relative uppercase font-extrabold text-white text-3xl md:text-5xl max-w-min"
+    >
+        {title}
+    </h1>
+    <span class="relative text-white font-medium flex gap-3 justify-center items-center">
+        <Maps width={20} height={20} class="text-ayllus-secondary" />
+        {address}
+    </span>
+</div>
+
+<style>
+      .swiper-slide {
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    font-size: 18px;
+    background: #a52a2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  @media (min-width: 768px) {
+    .swiper-slide {
+      width: 300px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .swiper-slide {
+      width: 500px;
+    }
+  }
+</style>
