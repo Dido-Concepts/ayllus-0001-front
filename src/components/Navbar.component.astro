@@ -5,20 +5,29 @@ import { MAIN_NAV, SUB_NAV } from '@src/constantes/mapsite.const';
 
 <header
   id="header"
-  class="fixed w-full transition duration-300 ease-in-out bg-gradient-header z-40"
+  class="fixed top-0 w-full transition duration-300 ease-in-out bg-gradient-header z-50"
 >
   <nav
     id="navbar"
     class="container mx-auto p-5 pt-0 sm:pt-10 flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center font-bold"
   >
     <div class="flex gap-4">
-      <img src="/logo/isotipo.png" alt="Isotipo" id="isotipo" class="hidden sm:block" />
-      <img
-        src="/logo/logo.png"
-        alt="Logo"
-        id="logo_ayllus"
-        class="hidden xl:block"
-      />
+      <a href="/">
+        <img
+          src="/logo/isotipo.png"
+          alt="Isotipo"
+          id="isotipo"
+          class="hidden sm:block"
+        />
+      </a>
+      <a href="/">
+        <img
+          src="/logo/logo.png"
+          alt="Logo"
+          id="logo_ayllus"
+          class="hidden xl:block"
+        />
+      </a>
     </div>
     <div class="flex flex-col justify-between gap-8">
       <ul class="flex justify-end items-center text-white">
@@ -163,7 +172,11 @@ hamburger.addEventListener('click', () => {
   modal.classList.add('animate-jump-out', 'animate-once', 'animate-reverse')
 
   setTimeout(() => {
-    modal.classList.remove('animate-jump-out', 'animate-once', 'animate-reverse')
+    modal.classList.remove(
+      'animate-jump-out',
+      'animate-once',
+      'animate-reverse'
+    )
   }, 800)
 })
 
