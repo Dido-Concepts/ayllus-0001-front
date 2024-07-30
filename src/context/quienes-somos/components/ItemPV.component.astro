@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  img: string;
+  description: string;
+}
+
+const { description, img, title } = Astro.props as Props
+
+---
+
+<div class="ml-6">
+    <div class="flex items-center md:items-start flex-col md:flex-row mb-2 gap-10">
+      <div class="flex-shrink-0">
+        <img
+          src={img}
+          alt="Adhesión abierta y voluntaria"
+          class="h-20 w20"
+        />
+      </div>
+      <div class="text-center md:text-start">
+        <h2 class="text-xl font-semibold text-ayllus-secondary">
+          {title}
+        </h2>
+        <p class="text-gray-700">{description}</p>
+      </div>
+    </div>
+  </div>
