@@ -1,0 +1,72 @@
+---
+import Layout from '@src/layouts/Layout.astro'
+import SectionPv from '@src/context/quienes-somos/section/SectionPV.section.astro'
+
+const DATA = [
+  {
+    title: 'Principios',
+    items: [
+      {
+        title: 'Honestidad',
+        img: '/icon.png',
+        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
+      },
+      {
+        title: 'Honestidad',
+        img: '/icon.png',
+        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
+      },
+      {
+        title: 'Honestidad',
+        img: '/icon.png',
+        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
+      },
+      {
+        title: 'Honestidad',
+        img: '/icon.png',
+        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
+      }
+    ]
+  },
+  {
+    title: 'Valores',
+    items: [
+      {
+        title: 'Honestidad',
+        img: '/icon.png',
+        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
+      },
+      {
+        title: 'Honestidad',
+        img: '/icon.png',
+        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
+      },
+      {
+        title: 'Honestidad',
+        img: '/icon.png',
+        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
+      },
+      {
+        title: 'Honestidad',
+        img: '/icon.png',
+        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
+      }
+    ]
+  }
+]
+
+---
+
+<Layout title="Principios y Valores">
+
+  <section class="md:mt-28 mt-10">
+
+  {
+    DATA.map(section => (
+      <SectionPv title={section.title} items={section.items} />
+    ))
+  }
+
+  </section>
+
+</Layout>
