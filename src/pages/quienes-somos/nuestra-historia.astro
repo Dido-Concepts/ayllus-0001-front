@@ -1,13 +1,15 @@
 ---
-import Layout from '@src/layouts/Layout.astro';
+// import ContentSection from '@src/components/ContentSection.component.astro'
+import HeaderPage from '@src/components/HeaderPage.component.astro'
+import Layout from '@src/layouts/Layout.astro'
+
+const img =
+    'https://bucket.material-tailwind.com/magic-ai/bbe71871de8b4d6f23bb0f17a6d5aa342f3dea72677ba7238b18defa3741244d.jpg';
+
 ---
 
-<Layout>
+<Layout title="Nuestra Historia">
+    <HeaderPage title="Nuestra Historia" imagen={img} />
 
-        <section>
-            <div>
-                <h1 class="mt-10">hola</h1>
-            </div>
-        </section>
-
+    <!-- <ContentSection /> -->
 </Layout>

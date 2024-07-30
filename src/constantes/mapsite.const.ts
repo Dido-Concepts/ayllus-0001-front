@@ -15,15 +15,23 @@ export const MAIN_NAV = [
         url: '#',
         sub_menu: [
             {
-                name: 'Submenu Item 1',
+                name: 'Nuestra historia',
                 url: '#'
             },
             {
-                name: 'Submenu Item 2',
+                name: 'Misión y visión',
                 url: '#'
             },
             {
-                name: 'Submenu Item 3',
+                name: 'Principios y valores',
+                url: '#'
+            },
+            {
+                name: 'Organigrama',
+                url: '#'
+            },
+            {
+                name: 'Reglamentos',
                 url: '#'
             }
         ]
@@ -33,17 +41,25 @@ export const MAIN_NAV = [
         url: '#',
         sub_menu: [
             {
-                name: 'Submenu Item 1',
+                name: 'Asóciate',
                 url: '#'
             },
             {
-                name: 'Submenu Item 2',
+                name: 'Aportaciones',
                 url: '#'
             },
             {
-                name: 'Submenu Item 3',
+                name: 'Derechos y obligaciones',
                 url: '#'
-            }
+            },
+            {
+                name: 'Beneficios',
+                url: '#'
+            },
+            {
+                name: 'Fondo de previsión social',
+                url: '#'
+            },
         ]
     },
     {
@@ -51,15 +67,23 @@ export const MAIN_NAV = [
         url: '#',
         sub_menu: [
             {
-                name: 'Submenu Item 1',
+                name: 'Estados financieros',
                 url: '#'
             },
             {
-                name: 'Submenu Item 2',
+                name: 'Tarifarios',
                 url: '#'
             },
             {
-                name: 'Submenu Item 3',
+                name: 'Temorias anuales',
+                url: '#'
+            },
+            {
+                name: 'Alianzas estratégicas',
+                url: '#'
+            },
+            {
+                name: 'Documentos normativos',
                 url: '#'
             }
         ]

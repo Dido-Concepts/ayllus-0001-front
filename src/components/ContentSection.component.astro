@@ -1,0 +1,39 @@
+---
+interface Props {
+    image: string;
+    title?: string;
+    direction?: 'left' | 'right';
+}
+
+const { image, title, direction = 'left' } = Astro.props as Props;
+
+// src="https://tailus.io/sources/blocks/left-image/preview/images/startup.png"
+---
+
+<div class="py-16">
+    <div
+        class="container m-auto px-6 py-8 rounded-3xl text-gray-600 md:px-12 xl:px-6 bg-white"
+    >
+        <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:gap-12">
+            <div class={`md:5/12 lg:w-6/12 flex justify-center ${direction === 'left' ? 'order-1' : 'order-2'}`}>
+                <img
+                    src={image}
+                    alt="ayllus-section"
+                />
+            </div>
+            <div class={`md:7/12 lg:w-6/12 py-8 ${direction === 'left' ? 'order-2' : 'order-1'}`}>
+
+                {
+                    title && (
+                        <h2 class="text-xl bg-ayllus-primary max-w-max px-8 py-2 rounded-full text-white font-semibold md:text-2xl">
+                            { title }
+                        </h2>
+                    )
+                }
+
+                <slot />
+
+            </div>
+        </div>
+    </div>
+</div>
