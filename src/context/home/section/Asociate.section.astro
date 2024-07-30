@@ -1,0 +1,46 @@
+---
+const TEXT = [
+  'Accede a préstamos con bajos intereses',
+  'Depósitos a plazo fijo y ¡sin comisiones!',
+  'Incentivos y participa en sorteos.'
+];
+---
+
+<section
+    class="py-20 bg-cover bg-center relative flex flex-col items-center gap-10"
+    style="background-image: url('/home/quienes_somos/asociatebg.webp');"
+>
+    <div
+        class="absolute inset-0 bg-gradient-to-r from-[#670098] to-[#A77DBA] opacity-100 -z-10"
+    >
+    </div>
+
+    <div class="w-11/12 md:w-8/12 lg:w-6/12  px-4">
+        <h1 class="text-white text-4xl md:text-6xl lg:text-8xl font-bold">
+            Asóciate
+        </h1>
+        <h2 class="text-white text-2xl md:text-4xl lg:text-6xl font-medium">
+            Beneficios de ser socio
+        </h2>
+        <p class="text-white text-xl md:text-2xl lg:text-3xl font-bold">
+            ¿Buscas seguridad financiera y beneficios exclusivos?
+        </p>
+    </div>
+
+    <ul class="flex flex-col md:flex-row gap-4 w-11/12 md:w-8/12 lg:w-6/12">
+        {
+            TEXT.map((text) => (
+                <li class="text-ayllus-secondary text-lg md:text-xl lg:text-2xl font-semibold bg-white p-6 md:p-8 lg:p-12 rounded-3xl">
+                    {text}
+                </li>
+            ))
+        }
+    </ul>
+
+    <a
+        href="/asociate"
+        class="bg-white border-2 font-semibold hover:text-white hover:bg-ayllus-secondary text-ayllus-secondary max-w-fit px-4 md:px-6 lg:px-8 py-1 md:py-2 rounded-full"
+    >
+        Conoce los requisitos aquí
+    </a>
+</section>

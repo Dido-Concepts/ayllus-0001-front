@@ -1,6 +1,8 @@
 ---
-import Navbar from '@src/components/Navbar.component.astro'
 import '@fontsource-variable/onest'
+import Navbar from '@src/components/Navbar.component.astro'
+import Footer from '@src/components/Footer.component.astro'
+import { keywords } from '@src/constantes/keywords.const'
 
 interface Props {
 	title?: string;
@@ -19,7 +21,7 @@ if (title) {
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={keywords.join(', ')} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
@@ -28,11 +30,13 @@ if (title) {
 	<body>
 		<Navbar />
 		<slot />
+		<Footer />
 	</body>
 </html>
 
 <style is:global>
 	body {
 		font-family: "Onest Variable", sans-serif;
+		background-color: #FCF5FF;
 	}
 </style>
