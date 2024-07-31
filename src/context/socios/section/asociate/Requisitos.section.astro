@@ -1,0 +1,30 @@
+---
+import ContentSection from '@src/components/ContentSection.component.astro'
+import { asociateBodyService } from '@src/context/socios/services/asociate.service'
+
+const data = await asociateBodyService();
+---
+
+<section class="max-w-screen-2xl mx-auto">
+    <h1
+        class="w-full  text-2xl text-center mx-2 md:mx-0 md:text-left md:text-4xl border-b-2 border-ayllus-primary font-semibold text-ayllus-primary"
+    >
+        Requisitos para ser socio
+    </h1>
+
+    {
+        data.map((card) => (
+            <ContentSection
+                image={card.hero.url}
+                direction="right"
+                title={card.titulo}
+            >
+                <ul class="py-10 flex flex-col gap-1 list-disc px-">
+                    {card.itemText.map((item) => (
+                        <li class="text-lg font-medium">{item.item}</li>
+                    ))}
+                </ul>
+            </ContentSection>
+        ))
+    }
+</section>

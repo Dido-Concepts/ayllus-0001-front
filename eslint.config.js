@@ -1,4 +1,7 @@
 import eslintPluginAstro from 'eslint-plugin-astro'
+import astroEslintParser from 'astro-eslint-parser'
+import tseslint from 'typescript-eslint'
+import typescriptParser from '@typescript-eslint/parser'
 import { FlatCompat } from '@eslint/eslintrc'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -11,11 +14,30 @@ const compat = new FlatCompat({
 })
 
 export default [
+  ...tseslint.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
   ...compat.extends('eslint-config-standard'),
   {
-    rules: {
-      'no-tabs': 'off'
+    files: ['**/*.astro'],
+    languageOptions: {
+      parser: astroEslintParser,
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.astro']
+      }
     }
+  },
+  {
+
+    files: ['**/*.{ts,tsx}', '**/*.astro/*.js'],
+    languageOptions: {
+      parser: typescriptParser
+    },
+    rules: {
+      'no-use-before-define': 'off'
+    }
+  },
+  {
+    ignores: ['dist', 'node_modules', '.github', 'types.generated.d.ts', '.astro']
   }
 ]

@@ -1,0 +1,18 @@
+---
+import Requisitos from '@src/context/socios/section/asociate/Requisitos.section.astro'
+import { asociateHeaderService } from '@src/context/socios/services/asociate.service'
+import FooterAsociate from '@src/components/FooterAsociate.component.astro'
+import HeaderSection from '@src/context/socios/section/HeaderSection.section.astro'
+import Layout from '@src/layouts/Layout.astro'
+
+const title = 'Asociate'
+const footerText = ' ¡Forma parte de nuestra gran familia de la Cooperativa Ayllus Perú Ltda.!'
+
+const data = await asociateHeaderService()
+---
+
+<Layout title={title}>
+    <HeaderSection title={title} descripcion={data.descripcionHeader} imagen={data.imageHeader.url} />
+    <Requisitos />
+    <FooterAsociate text={footerText} />
+</Layout>

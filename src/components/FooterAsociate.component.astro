@@ -1,0 +1,15 @@
+---
+interface Props {
+    text: string;
+}
+
+const { text } = Astro.props as Props;
+---
+
+<section class="bg-ayllus-primary flex justify-center py-8 md:py-10">
+    <a
+        class="max-w-screen-2xl px-2 md:px-0 text-center text-xl md:text-4xl text-white font-semibold"
+    >
+        {text}
+    </a>
+</section>

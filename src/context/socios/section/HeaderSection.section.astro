@@ -1,0 +1,21 @@
+---
+import HeaderPage from '@src/components/HeaderPage.component.astro'
+
+interface Props {
+    title: string;
+    imagen: string;
+    descripcion?: string;
+}
+
+const { title, imagen, descripcion } = Astro.props as Props;
+---
+
+<HeaderPage title={title} imagen={imagen} />
+
+{
+    descripcion && (
+        <p class="max-w-screen-2xl px-4 text-center md:text-left md:px-0  text-xl font-medium mx-auto my-10">
+            {descripcion}
+        </p>
+    )
+}
