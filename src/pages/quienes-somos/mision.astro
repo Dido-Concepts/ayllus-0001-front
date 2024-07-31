@@ -1,0 +1,41 @@
+---
+import ContentSection from '@src/components/ContentSection.component.astro'
+import HeaderPage from '@src/components/HeaderPage.component.astro'
+import SectionLogo from '@src/components/SectionLogo.component.astro'
+import { misionService } from '@src/context/quienes-somos/services/mision.service'
+import Layout from '@src/layouts/Layout.astro'
+
+const data = await misionService();
+---
+
+<Layout title="Mision y Vision">
+    <HeaderPage title="Nuestra Historia" imagen={data.imageHeader.url} />
+
+    {
+        data.listItems.map((card, index) => (
+            <ContentSection
+                image={card.hero.url}
+                direction={index % 2 === 0 ? 'right' : 'left'}
+            >
+                <div class="flex flex-col gap-4 md:gap-8">
+                    <div class="flex items-center gap-4 md:gap-6">
+                        <h1 class="text-3xl md:text-6xl font-extrabold text-ayllus-primary">
+                            {card.title}
+                        </h1>
+                        <img
+                            src={card.icon.url}
+                            alt={card.title}
+                            class="w-12 md:w-16"
+                        />
+                    </div>
+
+                    <p class="font-medium text-lg md:text-2xl">
+                        {card.descripcion}
+                    </p>
+                </div>
+            </ContentSection>
+        ))
+    }
+
+    <SectionLogo />
+</Layout>
