@@ -1,14 +1,13 @@
 import type { Image, MultimediaStrapi } from '@src/interfaces/Image'
 
 export interface CarouselResponse {
-    id:          number;
+    id: number;
     descripcion: string;
-    multimedia:  Multimedia;
+    multimedia: MultimediaStrapi;
 }
 
-
 export interface CarouselData {
-    id:          number;
+    id: number;
     descripcion: string;
-    imagen:      Image
+    imagen: Image
 }

@@ -7,7 +7,6 @@ export interface OficinaResponse {
     foto_oficina: MultimediaStrapi;
 }
 
-
 export interface OficinaData {
     id: number;
     title: string;
