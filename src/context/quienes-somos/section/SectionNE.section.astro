@@ -1,0 +1,36 @@
+---
+import ItemNE from '@src/context/quienes-somos/components/ItemNE.component.astro'
+
+interface Item {
+  cargo: string;
+  img: string;
+  nombre: string;
+}
+
+interface Props {
+  title: string;
+  items: Item[];
+}
+
+const { items, title } = Astro.props as Props;
+---
+
+<section class="p-8">
+  <div class="max-w-3xl mx-auto p-6 rounded-lg">
+    <h1 class="text-4xl md:text-3xl xl:text-7xl font-extrabold text-ayllus-primary text-center mb-12">
+      {title}
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 place-items-center">
+
+        {
+            items.map((item) => (
+              <ItemNE cargo={item.cargo} img={item.img} nombre={item.nombre} />
+
+            ))
+          }
+
+    </div>
+
+  </div>
+</section>
