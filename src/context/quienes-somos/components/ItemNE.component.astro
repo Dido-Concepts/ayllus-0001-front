@@ -1,0 +1,25 @@
+---
+interface Props {
+  cargo: string;
+  img: string;
+  nombre: string;
+}
+
+const { cargo, img, nombre } = Astro.props as Props;
+
+---
+
+      <div class="bg-white w-80 rounded-2xl shadow-lg">
+        <img
+          src={img}
+          alt="Gerente General"
+          class="w-100% h-64 object-cover rounded-tl-2xl rounded-tr-2xl"
+        />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold text-gray-800">
+            {cargo}
+          </h2>
+          <hr class="w-full border-t border-ayllus-primary my-2" />
+          <p class="text-gray-600">{nombre}</p>
+        </div>
+      </div>
