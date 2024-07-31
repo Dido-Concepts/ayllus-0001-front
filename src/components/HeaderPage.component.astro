@@ -1,0 +1,26 @@
+---
+interface Props {
+    title: string;
+    imagen: string;
+}
+
+const { title, imagen } = Astro.props as Props;
+---
+
+<section
+    class="relative w-full h-40 sm:h-52 md:h-64 xl:h-80 rounded-b-[1rem] md:rounded-b-[2rem] flex flex-col justify-end overflow-hidden"
+>
+    <img
+        class="absolute h-full w-full object-cover object-center"
+        src={imagen}
+        alt="nature image"
+    />
+    <div class="absolute inset-0 h-full w-full bg-black/40"></div>
+    <div class="relative container mx-auto px-5 md:mb-6">
+        <h2
+            class="block antialiased tracking-normal md:text-start text-center font-extrabold text-white mb-4 text-3xl lg:text-5xl"
+        >
+            { title }
+        </h2>
+    </div>
+</section>

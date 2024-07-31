@@ -1,20 +1,33 @@
+---
+import { carouselService } from '@src/context/home/services/carousel.service'
+
+const data = await carouselService()
+---
+
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <video autoplay muted loop playsinline>
-        <source src="/video_banner.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="swiper-slide">
-      <img src="/ayacucho.jpg" alt="image" />
-    </div>
-    <div class="swiper-slide">
-      <img src="/pichari.jpg" alt="image" />
-    </div>
-    <div class="swiper-slide">
-      <img src="/ayacucho.jpg" alt="image" />
-    </div>
+    {
+      data.map((item) => (
+        <div class="swiper-slide">
+          {item.imagen.mime === 'video/mp4'
+            ? (
+            <video autoplay muted loop playsinline aria-label={item.descripcion} >
+              <source src={item.imagen.url} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+              )
+            : (
+            <img
+              src={item.imagen.url}
+              alt={item.descripcion}
+              width={item.imagen.width}
+              height={item.imagen.height}
+              aria-label={item.descripcion}
+            />
+              )}
+        </div>
+      ))
+    }
   </div>
   <div class="swiper-pagination"></div>
 </div>
@@ -63,7 +76,7 @@ swiper.init()
 
   @media (max-width: 768px) {
     .swiper {
-      height: 60vh; /* Altura para dispositivos móviles */
+      height: 60vh;
     }
   }
 
@@ -93,7 +106,7 @@ swiper.init()
     font-size: 12px;
     color: #000;
     opacity: 1 !important;
-    background: #C0C4CA !important;
+    background: #c0c4ca !important;
   }
 
   .swiper-pagination-bullet-active {
