@@ -4,8 +4,8 @@ interface Props {
     wrappedByKey?: string;
     wrappedByList?: boolean;
   }
-  
-  /**
+
+/**
    * Obtiene datos de la API de Strapi.
    * @param endpoint - El endpoint para realizar la consulta
    * @param query - Los parámetros de consulta para agregar a la URL
@@ -13,34 +13,34 @@ interface Props {
    * @param wrappedByList - Si la respuesta es una lista, desempaqueta la.
    * @returns
    */
-  
-  export default async function fetchApi<T>({
-    endpoint,
-    query,
-    wrappedByKey,
-    wrappedByList,
-  }: Props): Promise<T> {
-    if (endpoint.startsWith('/')) {
-      endpoint = endpoint.slice(1);
-    }
-  
-    const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`);
-  
-    if (query) {
-      Object.entries(query).forEach(([key, value]) => {
-        url.searchParams.append(key, value);
-      });
-    }
-    const res = await fetch(url.toString());
-    let data = await res.json();
-  
-    if (wrappedByKey) {
-      data = data[wrappedByKey];
-    }
-  
-    if (wrappedByList) {
-      data = data[0];
-    }
-  
-    return data as T;
+
+export default async function fetchApi<T> ({
+  endpoint,
+  query,
+  wrappedByKey,
+  wrappedByList
+}: Props): Promise<T> {
+  if (endpoint.startsWith('/')) {
+    endpoint = endpoint.slice(1)
   }
+
+  const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`)
+
+  if (query) {
+    Object.entries(query).forEach(([key, value]) => {
+      url.searchParams.append(key, value)
+    })
+  }
+  const res = await fetch(url.toString())
+  let data = await res.json()
+
+  if (wrappedByKey) {
+    data = data[wrappedByKey]
+  }
+
+  if (wrappedByList) {
+    data = data[0]
+  }
+
+  return data as T
+}

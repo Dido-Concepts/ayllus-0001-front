@@ -1,17 +1,16 @@
 export interface HorarioResponse {
-    id:     number;
+    id: number;
     titulo: string;
-    Hora:   Hora[];
+    Hora: Hora[];
 }
 
 export interface Hora {
-    id:     number;
+    id: number;
     inicio: string;
-    fin:    string;
+    fin: string;
 }
-
 
 export interface HorarioData {
     telefono: string;
-    horario:  HorarioResponse[];
+    horario: HorarioResponse[];
 }
