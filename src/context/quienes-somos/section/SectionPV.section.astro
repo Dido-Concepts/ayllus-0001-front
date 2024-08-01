@@ -1,11 +1,6 @@
 ---
 import ItemPV from '@src/context/quienes-somos/components/ItemPV.component.astro'
-
-interface Item {
-  title: string;
-  img: string;
-  description: string;
-}
+import type { Item } from '@src/context/quienes-somos/interfaces/principiosValores'
 
 interface Props {
   title: string;
@@ -26,7 +21,7 @@ const { items, title } = Astro.props as Props;
     <div class="flex flex-col gap-4">
       {
         items.map((item) => (
-          <ItemPV title={item.title} description={item.description} img={item.img} />
+          <ItemPV title={item.titulo} description={item.descripcion} img={item.img.url} />
         ))
       }
     </div>

@@ -1,72 +1,27 @@
 ---
 import Layout from '@src/layouts/Layout.astro'
 import SectionPv from '@src/context/quienes-somos/section/SectionPV.section.astro'
+import HeaderPage from '@src/components/HeaderPage.component.astro'
+import SectionLogo from '@src/components/SectionLogo.component.astro'
+import {
+  principiosValoresBodyService,
+  principiosValoresHeaderService
+} from '@src/context/quienes-somos/services/principiosValores.service'
 
-const DATA = [
-  {
-    title: 'Principios',
-    items: [
-      {
-        title: 'Honestidad',
-        img: '/icon.png',
-        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
-      },
-      {
-        title: 'Honestidad',
-        img: '/icon.png',
-        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
-      },
-      {
-        title: 'Honestidad',
-        img: '/icon.png',
-        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
-      },
-      {
-        title: 'Honestidad',
-        img: '/icon.png',
-        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
-      }
-    ]
-  },
-  {
-    title: 'Valores',
-    items: [
-      {
-        title: 'Honestidad',
-        img: '/icon.png',
-        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
-      },
-      {
-        title: 'Honestidad',
-        img: '/icon.png',
-        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
-      },
-      {
-        title: 'Honestidad',
-        img: '/icon.png',
-        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
-      },
-      {
-        title: 'Honestidad',
-        img: '/icon.png',
-        description: 'Actuar con transparencia y sinceridad en todas nuestras acciones.'
-      }
-    ]
-  }
-]
+const data = await principiosValoresBodyService()
+const headerData = await principiosValoresHeaderService()
 
+const title = 'Principios y Valores';
 ---
 
-<Layout title="Principios y Valores">
-
-  <section class="md:mt-28 mt-10">
+<Layout title={title}>
+  <HeaderPage title={title} imagen={headerData.imageHeader.url} />
 
   {
-    DATA.map(section => (
+    data.map((section) => (
       <SectionPv title={section.title} items={section.items} />
     ))
   }
 
-  </section>
-
+  <SectionLogo />
 </Layout>

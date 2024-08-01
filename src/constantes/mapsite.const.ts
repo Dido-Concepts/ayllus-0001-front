@@ -24,7 +24,7 @@ export const MAIN_NAV = [
       },
       {
         name: 'Principios y valores',
-        url: '#'
+        url: '/quienes-somos/principios-valores'
       },
       {
         name: 'Organigrama',
@@ -46,7 +46,7 @@ export const MAIN_NAV = [
       },
       {
         name: 'Aportaciones',
-        url: '#'
+        url: '/socios/aportaciones'
       },
       {
         name: 'Derechos y obligaciones',
