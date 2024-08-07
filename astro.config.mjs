@@ -5,6 +5,10 @@ import vercel from '@astrojs/vercel/serverless'
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    domains: ['res.cloudinary.com'],
+    remotePatterns: [{ protocol: 'https' }]
+  },
   integrations: [
     tailwind(),
     alpine({ entrypoint: '/src/entrypoint' })],
