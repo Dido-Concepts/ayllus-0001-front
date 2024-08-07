@@ -32,7 +32,7 @@ export const MAIN_NAV = [
       },
       {
         name: 'Directivos',
-        url: '#'
+        url: '/quienes-somos/directivos'
       }
     ]
   },

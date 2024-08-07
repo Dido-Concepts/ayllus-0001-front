@@ -1,0 +1,30 @@
+---
+import {
+  directivosHeaderService,
+  directivosBodyService
+} from '@src/context/quienes-somos/services/directivos.service'
+import HeaderPage from '@src/components/HeaderPage.component.astro'
+import SectionLogo from '@src/components/SectionLogo.component.astro'
+import SectionPV from '@src/context/quienes-somos/section/SectionNE.section.astro'
+import Layout from '@src/layouts/Layout.astro'
+
+const title = 'Directivos'
+
+const headerData = await directivosHeaderService()
+const data = await directivosBodyService();
+---
+
+<Layout title={title}>
+    <HeaderPage title={title} imagen={headerData.imageHeader} />
+
+    {
+        data.map((section) => (
+            <SectionPV
+                title={section.nombre_oficina}
+                items={section.CardPersonal}
+            />
+        ))
+    }
+
+    <SectionLogo />
+</Layout>
