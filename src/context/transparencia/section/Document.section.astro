@@ -1,0 +1,37 @@
+---
+import type { Datum } from '@src/context/transparencia/interfaces/transparencia'
+import DocumentIcon from '@src/components/icons/Document.icon.astro'
+
+interface Props {
+    title: string;
+    description: string | null;
+    documents: Datum[];
+}
+
+const { title, description, documents } = Astro.props as Props;
+---
+
+<section class="my-12 ">
+    <div class="py-8 mx-auto max-w-screen-xl px-4 border-b-2 border-ayllus-primary">
+        <h1 class="text-ayllus-primary font-semibold text-3xl mb-4">{title}</h1>
+
+        {description && <p class="mb-4 font-normal text-xl">{description}</p>}
+
+        <ul class="flex flex-col gap-1">
+            {
+                documents.map((document) => (
+                    <li>
+                        <a
+                            class="text-xl text-ayllus-primary flex gap-2"
+                            href={document.attributes.url}
+                            target="_blank"
+                        >
+                            <DocumentIcon width={24} height={24} />
+                            <span>{document.attributes.name}</span>
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</section>

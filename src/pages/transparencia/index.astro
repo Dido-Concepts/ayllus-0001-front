@@ -1,0 +1,31 @@
+---
+import {
+  transparenciaHeaderService,
+  transparenciaBodyService
+} from '@src/context/transparencia/services/transparencia.service'
+import Layout from '@src/layouts/Layout.astro'
+import HeaderPage from '@src/components/HeaderPage.component.astro'
+import Document from '@src/context/transparencia/section/Document.section.astro'
+import SectionLogo from '@src/components/SectionLogo.component.astro'
+
+const title = 'Transparencia'
+
+const headerData = await transparenciaHeaderService()
+const data = await transparenciaBodyService();
+---
+
+<Layout title={title}>
+    <HeaderPage title={title} imagen={headerData.imageHeader} />
+
+    {
+        data.map((item) => (
+            <Document
+                title={item.titulo}
+                description={item.descripcion}
+                documents={item.lista_documento.data}
+            />
+        ))
+    }
+
+    <SectionLogo />
+</Layout>

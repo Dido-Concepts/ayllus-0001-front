@@ -25,6 +25,9 @@ export default [
         parser: '@typescript-eslint/parser',
         extraFileExtensions: ['.astro']
       }
+    },
+    rules: {
+      'no-tabs': 'off'
     }
   },
   {
