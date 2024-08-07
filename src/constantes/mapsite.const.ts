@@ -64,7 +64,7 @@ export const MAIN_NAV = [
   },
   {
     name: 'Transparencia',
-    url: '#',
+    url: '/transparencia',
     sub_menu: [
       {
         name: 'Estados financieros',

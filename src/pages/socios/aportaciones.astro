@@ -1,14 +1,32 @@
 ---
+import ContentSection from '@src/components/ContentSection.component.astro'
 import FooterAsociate from '@src/components/FooterAsociate.component.astro'
-// import HeaderSection from '@src/context/socios/section/HeaderSection.section.astro'
+import TitleSection from '@src/components/TitleSection.component.astro'
+import { aportacionesBodyService } from '@src/context/socios/services/aportaciones.service'
+
 import Layout from '@src/layouts/Layout.astro'
 
 const title = 'Aportaciones'
-const footerText = ' ¡Forma parte de nuestra gran familia de la Cooperativa Ayllus Perú Ltda.!'
+const footerText =
+    ' ¡Forma parte de nuestra gran familia de la Cooperativa Ayllus Perú Ltda.!'
+
+const data = await aportacionesBodyService()
 ---
 
 <Layout title={title}>
-    <!-- <HeaderSection title={title} imagen='https://res.cloudinary.com/drgh5rdiw/image/upload/v1720502396/web-ayllus/Images/large_pichari_ebfd7d9009.jpg' /> -->
+    <section class="mt-20 sm:mt-36 xl:mt-44">
+        {
+            data.map((item) => (
+                <>
+                    <TitleSection title={item.titulo} />
+
+                    <ContentSection image={item.imagen.url}>
+                        <p class="text-xl font-medium">{item.descripcion}</p>
+                    </ContentSection>
+                </>
+            ))
+        }
+    </section>
 
     <FooterAsociate text={footerText} />
 </Layout>
