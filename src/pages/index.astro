@@ -8,6 +8,7 @@ import NuestrosServicios from '@src/context/home/section/NuestrosServicios.secti
 import Asociate from '@src/context/home/section/Asociate.section.astro'
 import Contactanos from '@src/context/home/section/Contactanos.section.astro'
 import Marcas from '@src/context/home/section/Marcas.section.astro'
+import WhatsappIcon from '@src/components/icons/Whatsapp.icon.astro';
 ---
 
 <Layout>
@@ -19,4 +20,20 @@ import Marcas from '@src/context/home/section/Marcas.section.astro'
    <Asociate />
    <Contactanos />
    <Marcas />
+
+   <a
+      href="#"
+      class="fixed bottom-4 right-4 bg-ayllus-secondary text-white py-2 px-4 rounded-full shadow-lg hover:bg-ayllus-secondary/80 transition z-50 group"
+   >
+      <WhatsappIcon width={24} height={24} />
+      <div
+         class="absolute bottom-[50%] right-[calc(100%+0.5rem)] -translate-y-[50%] hidden group-hover:block w-auto"
+      >
+         <div
+            class="left-full bottom-0 rounded bg-black px-4 py-1 text-xs text-white whitespace-nowrap"
+         >
+            Contáctanos por Whatsapp
+         </div>
+      </div>
+   </a>
 </Layout>
