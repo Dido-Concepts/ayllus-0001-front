@@ -1,7 +1,10 @@
 ---
+import { Image as ImageAstro } from 'astro:assets'
+import type { Image } from '@src/interfaces/Image'
+
 interface Props {
   cargo: string;
-  img: string;
+  img: Image;
   nombre: string;
 }
 
@@ -10,10 +13,12 @@ const { cargo, img, nombre } = Astro.props as Props;
 ---
 
       <div class="bg-white w-80 rounded-2xl shadow-lg">
-        <img
-          src={img}
-          alt="Gerente General"
+        <ImageAstro
+          src={img.url}
+          alt={`${cargo} - ${nombre} - Ayllus Peru`}
           class="w-100% h-64 object-cover rounded-tl-2xl rounded-tr-2xl"
+          width={img.width}
+          height={img.height}
         />
         <div class="p-4">
           <h2 class="text-xl font-semibold text-gray-800">

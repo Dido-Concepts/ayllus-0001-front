@@ -1,9 +1,10 @@
-import type { PVResponse, Item, ItemPVData, HeaderItemPVData } from '@src/context/quienes-somos/interfaces/principiosValores'
+import type { PVResponse, Item, ItemPVData } from '@src/context/quienes-somos/interfaces/principiosValores'
+import type { ImageHeaderData } from '@src/interfaces/Header'
 
 const KEYS = ['Pricipios', 'Valores']
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function principiosValoresHeaderAdapter ({ data }: { data: any }): HeaderItemPVData {
+export function principiosValoresHeaderAdapter ({ data }: { data: any }): ImageHeaderData {
   const dataImageHeader = data?.attributes?.PageContent[0].imagen_header.data.attributes || null
 
   const imageHeader = {

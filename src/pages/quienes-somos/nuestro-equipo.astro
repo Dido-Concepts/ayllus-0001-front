@@ -1,85 +1,25 @@
 ---
+import HeaderPage from '@src/components/HeaderPage.component.astro'
+import SectionLogo from '@src/components/SectionLogo.component.astro'
 import SectionPV from '@src/context/quienes-somos/section/SectionNE.section.astro'
+import { nuestroEquipoBodyService, nuestroEquipoHeaderService } from '@src/context/quienes-somos/services/nuestroEquipo.service'
 import Layout from '@src/layouts/Layout.astro'
 
-const DATA = [
-  {
-    title: 'Oficina Principal',
-    items: [
-      {
-        cargo: 'Gerente General',
-        img: '/image.jpg',
-        nombre: 'Econ. Yagner Wily MENDOZA VENEGAS'
-      },
-      {
-        cargo: 'Gerente General',
-        img: '/image.jpg',
-        nombre: 'Econ. Yagner Wily MENDOZA VENEGAS'
-      },
-      {
-        cargo: 'Gerente General',
-        img: '/image.jpg',
-        nombre: 'Econ. Yagner Wily MENDOZA VENEGAS'
-      }
-    ]
-  },
+const title = 'Nuestro equipo'
 
-  {
-    title: 'Oficina Kimbiri',
-    items: [
-      {
-        cargo: 'Gerente General',
-        img: '/image.jpg',
-        nombre: 'Econ. Yagner Wily MENDOZA VENEGAS'
-      },
-      {
-        cargo: 'Gerente General',
-        img: '/image.jpg',
-        nombre: 'Econ. Yagner Wily MENDOZA VENEGAS'
-      },
-      {
-        cargo: 'Gerente General',
-        img: '/image.jpg',
-        nombre: 'Econ. Yagner Wily MENDOZA VENEGAS'
-      }
-    ]
-  },
-
-  {
-    title: 'Oficina Pichari',
-    items: [
-      {
-        cargo: 'Gerente General',
-        img: '/image.jpg',
-        nombre: 'Econ. Yagner Wily MENDOZA VENEGAS'
-      },
-      {
-        cargo: 'Gerente General',
-        img: '/image.jpg',
-        nombre: 'Econ. Yagner Wily MENDOZA VENEGAS'
-      },
-      {
-        cargo: 'Gerente General',
-        img: '/image.jpg',
-        nombre: 'Econ. Yagner Wily MENDOZA VENEGAS'
-      }
-    ]
-  }
-
-]
+const headerData = await nuestroEquipoHeaderService()
+const data = await nuestroEquipoBodyService()
 
 ---
 
-<Layout title="Nuestro equipo">
+<Layout title={title}>
+  <HeaderPage title={title} imagen={headerData.imageHeader} />
 
-  <section class="md:mt-28 mt-10">
+  {
+    data.map((section) => (
+      <SectionPV title={section.nombre_oficina} items={section.CardPersonal} />
+    ))
+  }
 
-    {
-      DATA.map(section => (
-        <SectionPV title={section.title} items={section.items}/>
-      ))
-    }
-
-  </section>
-
+  <SectionLogo />
 </Layout>

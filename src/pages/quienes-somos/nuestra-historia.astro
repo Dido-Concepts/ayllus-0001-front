@@ -9,7 +9,7 @@ const data = await nuestraHistoriaService();
 ---
 
 <Layout title="Nuestra Historia">
-    <HeaderPage title="Nuestra Historia" imagen={data.imageHeader.url} />
+    <HeaderPage title="Nuestra Historia" imagen={data.imageHeader} />
 
     {
         data.listCard.map((card, index) => (

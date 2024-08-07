@@ -5,10 +5,6 @@ export interface ItemPVData {
     items: Item[];
 }
 
-export interface HeaderItemPVData {
-    imageHeader: Image;
-}
-
 export interface Item {
     titulo: string;
     img: Image;

@@ -1,9 +1,10 @@
 ---
 import HeaderPage from '@src/components/HeaderPage.component.astro'
+import type { Image } from '@src/interfaces/Image'
 
 interface Props {
     title: string;
-    imagen: string;
+    imagen: Image;
     descripcion?: string;
 }
 

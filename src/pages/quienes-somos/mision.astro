@@ -9,7 +9,7 @@ const data = await misionService();
 ---
 
 <Layout title="Mision y Vision">
-    <HeaderPage title="Nuestra Historia" imagen={data.imageHeader.url} />
+    <HeaderPage title="Nuestra Historia" imagen={data.imageHeader} />
 
     {
         data.listItems.map((card, index) => (
