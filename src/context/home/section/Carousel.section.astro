@@ -1,7 +1,7 @@
 ---
 import { carouselService } from '@src/context/home/services/carousel.service'
-
-const data = await carouselService()
+import { Image } from 'astro:assets'
+const data = await carouselService();
 ---
 
 <div class="swiper mySwiper">
@@ -11,18 +11,26 @@ const data = await carouselService()
         <div class="swiper-slide">
           {item.imagen.mime === 'video/mp4'
             ? (
-            <video autoplay muted loop playsinline aria-label={item.descripcion} >
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              aria-label={item.descripcion}
+            >
               <source src={item.imagen.url} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
               )
             : (
-            <img
+            <Image
               src={item.imagen.url}
               alt={item.descripcion}
               width={item.imagen.width}
               height={item.imagen.height}
               aria-label={item.descripcion}
+              decoding="async"
+              loading="eager"
             />
               )}
         </div>

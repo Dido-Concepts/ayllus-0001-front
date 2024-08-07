@@ -27,11 +27,11 @@ export const MAIN_NAV = [
         url: '/quienes-somos/principios-valores'
       },
       {
-        name: 'Organigrama',
-        url: '#'
+        name: 'Nuestro Equipo',
+        url: '/quienes-somos/nuestro-equipo'
       },
       {
-        name: 'Reglamentos',
+        name: 'Directivos',
         url: '#'
       }
     ]

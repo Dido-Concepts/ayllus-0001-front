@@ -1,10 +1,12 @@
 ---
 import ItemNE from '@src/context/quienes-somos/components/ItemNE.component.astro'
+import type { Image } from '@src/interfaces/Image'
 
 interface Item {
+  id: number;
   cargo: string;
-  img: string;
-  nombre: string;
+  foto: Image;
+  nombre_persona: string;
 }
 
 interface Props {
@@ -25,8 +27,7 @@ const { items, title } = Astro.props as Props;
 
         {
             items.map((item) => (
-              <ItemNE cargo={item.cargo} img={item.img} nombre={item.nombre} />
-
+              <ItemNE cargo={item.cargo} img={item.foto} nombre={item.nombre_persona} />
             ))
           }
 

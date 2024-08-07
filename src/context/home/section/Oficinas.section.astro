@@ -3,7 +3,6 @@ import CardOficina from '@src/context/home/components/CardOficina.component.astr
 import { oficinaService } from '@src/context/home/services/oficina.service'
 
 const oficinas = await oficinaService();
-
 ---
 
 <section class="w-full relative py-14 bg-[#FCF5FF] px-8">
@@ -18,7 +17,7 @@ const oficinas = await oficinaService();
       oficinas.map((oficina) => (
         <CardOficina
           title={oficina.title}
-          image={oficina.imagen.url}
+          image={oficina.imagen}
           address={oficina.direccion}
         />
       ))

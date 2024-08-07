@@ -1,10 +1,12 @@
 ---
 import Maps from '@src/components/icons/Maps.icon.astro'
+import { Image } from 'astro:assets'
+import type { Image as ImageProps } from '@src/interfaces/Image'
 import { generateGoogleMapsURL } from '@src/utils/maps.utils'
 
 interface Props {
   title: string;
-  image: string;
+  image: ImageProps;
   address: string;
 }
 
@@ -12,31 +14,53 @@ const { title, image, address } = Astro.props as Props
 
 const city = title.split(' ')[1]
 
-const urlMaps = generateGoogleMapsURL({ address, city })
-
+const urlMaps = generateGoogleMapsURL({ address, city });
 ---
 
-<div class="relative flex flex-col justify-center overflow-hidden bg-gray-50 w-full sm:max-w-lg">
-  <div class="absolute inset-0 bg-center bg-gradient-to-b from-[#7406A7] to-[#7406A7] rounded-xl"></div>
-  <div class="group relative m-0 flex h-72 w-full max-w-lg rounded-xl shadow-xl ring-gray-900/5 transition-all duration-300 ease-in-out">
-    <div class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-50 transition duration-300 ease-in-out ">
-      <img
-        src={image}
+<div
+  class="relative flex flex-col justify-center overflow-hidden bg-gray-50 w-full sm:max-w-lg"
+>
+  <div
+    class="absolute inset-0 bg-center bg-gradient-to-b from-[#7406A7] to-[#7406A7] rounded-xl"
+  >
+  </div>
+  <div
+    class="group relative m-0 flex h-72 w-full max-w-lg rounded-xl shadow-xl ring-gray-900/5 transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-50 transition duration-300 ease-in-out"
+    >
+      <Image
+        src={image.url}
         class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
         alt={title}
+        width={image.width}
+        height={image.height}
+        decoding="async"
+        loading="eager"
         arial-label={title}
       />
     </div>
-    <div class="absolute inset-0 z-20 m-0 flex flex-col gap-4 items-center justify-center transition duration-300 ease-in-out group-hover:scale-110">
-      <h1 class="font-serif text-2xl xl:text-4xl font-extrabold text-white shadow-xl">
+    <div
+      class="absolute inset-0 z-20 m-0 flex flex-col gap-4 items-center justify-center transition duration-300 ease-in-out group-hover:scale-110"
+    >
+      <h1
+        class="font-serif text-2xl xl:text-4xl font-extrabold text-white shadow-xl"
+      >
         {title}
       </h1>
-      <h1 class="text-sm xl:text-xl font-bold text-gray-200 shadow-xl flex gap-2 items-center">
+      <h1
+        class="text-sm xl:text-xl font-bold text-gray-200 shadow-xl flex gap-2 items-center"
+      >
         <Maps height={20} width={20} class="text-ayllus-secondary" />
         {address}
       </h1>
     </div>
-    <a href={urlMaps} target="_blank" class="hidden group-hover:block absolute left-1/2 transform -translate-x-1/2 bottom-4 z-30 bg-white border-2 font-semibold hover:text-white hover:bg-ayllus-secondary text-ayllus-secondary max-w-fit px-8 py-1 rounded-full transition duration-300 ease-in-out my-4">
+    <a
+      href={urlMaps}
+      target="_blank"
+      class="hidden group-hover:block absolute left-1/2 transform -translate-x-1/2 bottom-4 z-30 bg-white border-2 font-semibold hover:text-white hover:bg-ayllus-secondary text-ayllus-secondary max-w-fit px-8 py-1 rounded-full transition duration-300 ease-in-out my-4"
+    >
       Ir a Maps
     </a>
   </div>

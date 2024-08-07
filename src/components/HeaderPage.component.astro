@@ -1,7 +1,10 @@
 ---
+import { Image as ImageAstro } from 'astro:assets'
+import type { Image } from '@src/interfaces/Image'
+
 interface Props {
     title: string;
-    imagen: string;
+    imagen: Image;
 }
 
 const { title, imagen } = Astro.props as Props;
@@ -10,10 +13,14 @@ const { title, imagen } = Astro.props as Props;
 <section
     class="relative w-full h-40 sm:h-52 md:h-64 xl:h-80 rounded-b-[1rem] md:rounded-b-[2rem] flex flex-col justify-end overflow-hidden"
 >
-    <img
+    <ImageAstro
         class="absolute h-full w-full object-cover object-center"
-        src={imagen}
+        src={imagen.url}
         alt="Ayllus Peru"
+        width={imagen.width}
+        height={imagen.height}
+        loading={'eager'}
+        decoding={'async'}
     />
     <div class="absolute inset-0 h-full w-full bg-black/40"></div>
     <div class="relative container mx-auto px-5 md:mb-6">
