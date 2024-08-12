@@ -1,0 +1,29 @@
+---
+import Layout from '@src/layouts/Layout.astro'
+import SectionLogo from '@src/components/SectionLogo.component.astro'
+import HeaderPage from '@src/components/HeaderPage.component.astro'
+import TipoCredito from '@src/context/creditos/serction/TipoCredito.section.astro'
+import {
+  ahorrosHeaderService,
+  ahorrosBodyService
+} from '@src/context/ahorros/services/ahorros.service'
+
+const title = 'Ahorros'
+
+const headerData = await ahorrosHeaderService()
+
+const data = await ahorrosBodyService()
+
+---
+
+<Layout title={title}>
+    <HeaderPage title={title} imagen={headerData.imageHeader} />
+
+    {
+      data.map(item => (
+        <TipoCredito title={item.nombreTipo} descripcion={item.descripcion} creditos={item.ahorrosInfos} imagen={item.imagenTipo} />
+      ))
+    }
+
+    <SectionLogo />
+</Layout>

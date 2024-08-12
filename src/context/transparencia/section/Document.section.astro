@@ -11,18 +11,30 @@ interface Props {
 const { title, description, documents } = Astro.props as Props;
 ---
 
-<section class="my-12 ">
-    <div class="py-8 mx-auto max-w-screen-xl px-4 border-b-2 border-ayllus-primary">
-        <h1 class="text-ayllus-primary font-semibold text-3xl mb-4">{title}</h1>
+<section class="my-12">
+    <div
+        class="py-8 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 border-b-2 border-ayllus-primary"
+    >
+        <h1
+            class="text-ayllus-primary font-semibold text-2xl sm:text-3xl lg:text-4xl mb-4"
+        >
+            {title}
+        </h1>
 
-        {description && <p class="mb-4 font-normal text-xl">{description}</p>}
+        {
+            description && (
+                <p class="mb-4 font-normal text-base sm:text-lg lg:text-xl">
+                    {description}
+                </p>
+            )
+        }
 
-        <ul class="flex flex-col gap-1">
+        <ul class="flex flex-col gap-2 sm:gap-3 lg:gap-4">
             {
                 documents.map((document) => (
                     <li>
                         <a
-                            class="text-xl text-ayllus-primary flex gap-2"
+                            class="text-lg sm:text-xl lg:text-2xl text-ayllus-primary flex items-center gap-2"
                             href={document.attributes.url}
                             target="_blank"
                         >

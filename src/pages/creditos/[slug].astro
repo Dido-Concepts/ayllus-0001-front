@@ -1,0 +1,38 @@
+---
+import type { InfoCreditoData } from '@src/context/creditos/interfaces/infoCredito'
+import { infoCreditoService } from '@src/context/creditos/services/infoCredito.service'
+import Layout from '@src/layouts/Layout.astro'
+import HeaderPage from '@src/components/HeaderPage.component.astro'
+import ListaRequisitos from '@src/context/creditos/components/ListaRequisitos.component.astro'
+import SectionLogo from '@src/components/SectionLogo.component.astro'
+
+const { slug } = Astro.params
+
+let credito: InfoCreditoData
+
+try {
+  credito = await infoCreditoService({ slug })
+} catch {
+  return Astro.redirect('/')
+}
+---
+
+<Layout title={credito.titulo}>
+  <HeaderPage title={credito.titulo} imagen={credito.imagen} />
+
+  <p
+    class="py-10 mx-auto max-w-screen-2xl px-6 sm:px-4 lg:px-6 text-lg sm:text-xl lg:text-2xl"
+  >
+    {credito.descripcion}
+  </p>
+
+  <section class="pb-16">
+    {
+      credito.contenido.map((item) => (
+        <ListaRequisitos titulo={item.titulo} lista={item.lista} />
+      ))
+    }
+  </section>
+
+  <SectionLogo />
+</Layout>
