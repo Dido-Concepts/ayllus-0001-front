@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets'
+import type { Image as ImageProps } from '@src/interfaces/Image'
+
+interface Props {
+  title: string;
+  image: ImageProps;
+  slug: string;
+}
+
+const { title, image, slug } = Astro.props as Props;
+---
+
+<a
+  href={`/creditos/${slug}`}
+  class="relative flex flex-col justify-center overflow-hidden bg-gray-50 w-full sm:max-w-lg"
+>
+  <div
+    class="absolute inset-0 bg-center bg-gradient-to-b from-[#7406A7] to-[#7406A7] rounded-xl"
+  >
+  </div>
+  <div
+    class="group relative m-0 flex h-72 w-full rounded-xl shadow-xl ring-gray-900/5 transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-50 transition duration-300 ease-in-out"
+    >
+      <Image
+        src={image.url}
+        class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
+        alt={title}
+        width={image.width}
+        height={image.height}
+        decoding="async"
+        loading="eager"
+        arial-label={title}
+      />
+    </div>
+    <div
+      class="absolute inset-0 z-20 m-0 flex flex-col gap-4 items-center justify-center transition duration-300 ease-in-out group-hover:scale-110"
+    >
+      <h1
+        class="font-serif text-2xl xl:text-4xl font-extrabold text-white shadow-xl px-4"
+      >
+        {title}
+      </h1>
+    </div>
+  </div>
+</a>

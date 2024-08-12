@@ -1,0 +1,33 @@
+---
+interface Props {
+    titulo: string;
+    lista: string[];
+}
+
+const { titulo, lista } = Astro.props as Props;
+---
+
+<section
+    class="py-6 mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 flex flex-col gap-4"
+>
+    <h2 class="text-ayllus-primary font-bold text-2xl sm:text-3xl lg:text-4xl">
+        {titulo}
+    </h2>
+
+    {
+        lista.length > 1 && (
+            <ul class="list-disc pl-6 sm:pl-8 lg:pl-10 text-base sm:text-lg lg:text-xl">
+                {lista.map((item) => (
+                    <li>{item}</li>
+                ))}
+            </ul>
+        )
+    }
+
+    {
+        lista.length === 1 && (
+            <p class="text-base sm:text-lg lg:text-xl pl-6 sm:pl-8 lg:pl-10s">{lista[0]}</p>
+        )
+    }
+
+</section>

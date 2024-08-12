@@ -3,6 +3,7 @@ import '@fontsource-variable/onest'
 import Navbar from '@src/components/Navbar.component.astro'
 import Footer from '@src/components/Footer.component.astro'
 import { keywords } from '@src/constantes/keywords.const'
+import WhatsappFloatButton from '@src/components/WhatsappFloatButton.component.astro'
 
 interface Props {
 	title?: string;
@@ -31,6 +32,7 @@ if (title) {
 		<Navbar />
 		<slot />
 		<Footer />
+		<WhatsappFloatButton />
 	</body>
 </html>
 

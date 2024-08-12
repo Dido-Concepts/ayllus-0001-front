@@ -1,11 +1,11 @@
 export const SUB_NAV = [
   {
     name: 'Créditos',
-    url: '#'
+    url: '/creditos'
   },
   {
     name: 'Ahorros',
-    url: '#'
+    url: '/ahorros'
   }
 ]
 
@@ -68,23 +68,23 @@ export const MAIN_NAV = [
     sub_menu: [
       {
         name: 'Estados financieros',
-        url: '#'
+        url: '/transparencia'
       },
       {
         name: 'Tarifarios',
-        url: '#'
+        url: '/transparencia'
       },
       {
         name: 'Temorias anuales',
-        url: '#'
+        url: '/transparencia'
       },
       {
         name: 'Alianzas estratégicas',
-        url: '#'
+        url: '/transparencia'
       },
       {
         name: 'Documentos normativos',
-        url: '#'
+        url: '/transparencia'
       }
     ]
   },
