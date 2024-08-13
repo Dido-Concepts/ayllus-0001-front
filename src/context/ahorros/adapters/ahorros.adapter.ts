@@ -1,5 +1,6 @@
 import type { ImageHeaderData } from '@src/interfaces/Header'
-import type { TipoAhorrosData, TipoAhorrosResponse } from '@src/context/ahorros/interfaces/ahorros'
+import type { TipoAhorrosResponse } from '@src/context/ahorros/interfaces/ahorros'
+import type { TipoProductCopacData } from '@src/interfaces/ProductCopac'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function ahorrosHeaderAdapter ({ data }: { data: any }): ImageHeaderData {
@@ -19,7 +20,7 @@ export function ahorrosHeaderAdapter ({ data }: { data: any }): ImageHeaderData 
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function ahorrosBodyAdapter ({ data }: { data: any }): TipoAhorrosData[] {
+export function ahorrosBodyAdapter ({ data }: { data: any }): TipoProductCopacData[] {
   const tiposAhorros: TipoAhorrosResponse[] = data || null
 
   return tiposAhorros.map(tipoAhorro => ({
@@ -32,9 +33,9 @@ export function ahorrosBodyAdapter ({ data }: { data: any }): TipoAhorrosData[] 
       extension: tipoAhorro.attributes.imagen_card.data.attributes.ext,
       mime: tipoAhorro.attributes.imagen_card.data.attributes.mime
     },
-    ahorrosInfos: tipoAhorro.attributes.ahorros_infos.data.map(ahorro => ({
+    productCopacInfos: tipoAhorro.attributes.ahorros_infos.data.map(ahorro => ({
       titulo: ahorro.attributes.titulo,
-      slug: ahorro.attributes.slug,
+      link: `/ahorros/${ahorro.attributes.slug}`,
       imagen: {
         url: ahorro.attributes.imagen.data.attributes.url,
         width: ahorro.attributes.imagen.data.attributes.width,

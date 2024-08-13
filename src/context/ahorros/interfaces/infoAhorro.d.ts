@@ -1,19 +1,19 @@
 import type { MultimediaStrapi } from '@src/interfaces/Image'
 
-export interface InfoCreditoResponse {
+export interface InfoAhorroResponse {
     id: number;
-    attributes: InfoCreditoResponseAttributes;
+    attributes: InfoAhorroResponseAttributes;
 }
 
-export interface InfoCreditoResponseAttributes {
+export interface InfoAhorroResponseAttributes {
+    titulo: string;
     descripcion: string;
     createdAt: Date;
     updatedAt: Date;
     publishedAt: Date;
-    titulo: string;
     slug: string;
     contenido: Contenido[];
-    tipo_credido: TipoCredido;
+    tipo_ahorro: TipoAhorro;
     imagen: MultimediaStrapi;
 }
 
@@ -23,19 +23,19 @@ export interface Contenido {
     lista: string[];
 }
 
-export interface TipoCredido {
-    data: TipoCredidoData;
+export interface TipoAhorro {
+    data: TipoAhorroData;
 }
 
-export interface TipoCredidoData {
+export interface TipoAhorroData {
     id: number;
     attributes: FluffyAttributes;
 }
 
 export interface FluffyAttributes {
     nombre_tipo: string;
+    descripcion: string;
     createdAt: Date;
     updatedAt: Date;
     publishedAt: Date;
-    descripcion: string;
 }

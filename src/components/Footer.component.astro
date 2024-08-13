@@ -7,11 +7,11 @@ import { MAIN_NAV } from '@src/constantes/mapsite.const';
     <div class="container mx-auto px-4">
         <div class="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
             {
-                MAIN_NAV.slice(0, 3).map((nav) => (
+                MAIN_NAV.slice(0, 2).map((nav) => (
                     <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
                         <h5 class="text-xl font-bold mb-6">{nav.name}</h5>
                         <ul class="list-none footer-links">
-                            {nav.sub_menu.map((sub) => (
+                            {nav.sub_menu && nav.sub_menu.map((sub) => (
                                 <li class="mb-2">
                                     <a
                                         href={sub.url}
@@ -27,6 +27,14 @@ import { MAIN_NAV } from '@src/constantes/mapsite.const';
             }
 
             <ul class="list-none footer-links flex flex-col justify-around px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
+                <li>
+                    <a
+                        href="/transparencia"
+                        class="border-b text-xl font-bold border-solid border-transparent hover:text-ayllus-secondary"
+                    >
+                        Transparencia
+                    </a>
+                </li>
                 <li>
                     <a
                         href="/canales-de-atencion"
@@ -83,7 +91,7 @@ import { MAIN_NAV } from '@src/constantes/mapsite.const';
                 admisión y aprobación. Se aplican restricciones. Las tasas,
                 comisiones, gastos y características de los productos y
                 servicios diferentes a la presente campaña se detallan en
-                nuestra página web www.abaco.pe y en la Plataforma de Atención,
+                nuestra página web www.cac-ayllusperu.pe y en la Plataforma de Atención,
                 a través del tarifario. Para acceder a los productos y
                 servicios, usted debe ser socio de Cooperativa de Ahorro y
                 Crédito Abaco, con RUC N° 20101091083. Solicite más información

@@ -2,7 +2,7 @@
 import Layout from '@src/layouts/Layout.astro'
 import SectionLogo from '@src/components/SectionLogo.component.astro'
 import HeaderPage from '@src/components/HeaderPage.component.astro'
-import TipoCredito from '@src/context/creditos/serction/TipoCredito.section.astro'
+import ProductoCopacSection from '@src/components/ProductoCopacSection.component.astro'
 import {
   ahorrosHeaderService,
   ahorrosBodyService
@@ -12,18 +12,22 @@ const title = 'Ahorros'
 
 const headerData = await ahorrosHeaderService()
 
-const data = await ahorrosBodyService()
-
+const data = await ahorrosBodyService();
 ---
 
 <Layout title={title}>
-    <HeaderPage title={title} imagen={headerData.imageHeader} />
+  <HeaderPage title={title} imagen={headerData.imageHeader} />
 
-    {
-      data.map(item => (
-        <TipoCredito title={item.nombreTipo} descripcion={item.descripcion} creditos={item.ahorrosInfos} imagen={item.imagenTipo} />
-      ))
-    }
+  {
+    data.map((item) => (
+      <ProductoCopacSection
+        title={item.nombreTipo}
+        descripcion={item.descripcion}
+        products={item.productCopacInfos}
+        imagen={item.imagenTipo}
+      />
+    ))
+  }
 
-    <SectionLogo />
+  <SectionLogo />
 </Layout>

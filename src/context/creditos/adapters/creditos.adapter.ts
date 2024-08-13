@@ -1,5 +1,6 @@
 import type { ImageHeaderData } from '@src/interfaces/Header'
-import type { TipoCreditosResponse, TipoCreditosData } from '@src/context/creditos/interfaces/creditos'
+import type { TipoCreditosResponse } from '@src/context/creditos/interfaces/creditos'
+import type { TipoProductCopacData } from '@src/interfaces/ProductCopac'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function creditosHeaderAdapter ({ data }: { data: any }): ImageHeaderData {
@@ -19,7 +20,7 @@ export function creditosHeaderAdapter ({ data }: { data: any }): ImageHeaderData
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function creditosBodyAdapter ({ data }: { data: any }): TipoCreditosData[] {
+export function creditosBodyAdapter ({ data }: { data: any }): TipoProductCopacData[] {
   const tiposCreditos: TipoCreditosResponse[] = data || null
 
   return tiposCreditos.map(tipoCredito => ({
@@ -32,9 +33,9 @@ export function creditosBodyAdapter ({ data }: { data: any }): TipoCreditosData[
       extension: tipoCredito.attributes.imagen_card.data.attributes.ext,
       mime: tipoCredito.attributes.imagen_card.data.attributes.mime
     },
-    creditosInfos: tipoCredito.attributes.creditos_infos.data.map(credito => ({
+    productCopacInfos: tipoCredito.attributes.creditos_infos.data.map(credito => ({
       titulo: credito.attributes.titulo,
-      slug: credito.attributes.slug,
+      link: `/creditos/${credito.attributes.slug}`,
       imagen: {
         url: credito.attributes.imagen.data.attributes.url,
         width: credito.attributes.imagen.data.attributes.width,

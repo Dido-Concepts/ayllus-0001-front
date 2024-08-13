@@ -1,5 +1,7 @@
 ---
-import Arrow from './icons/Arrow.icon.astro'
+import AcordionNavbar from '@src/components/AcordionNavbar.component.astro'
+import Arrow from '@src/components/icons/Arrow.icon.astro'
+import Close from '@src/components/icons/Close.icon.astro'
 import { MAIN_NAV, SUB_NAV } from '@src/constantes/mapsite.const';
 ---
 
@@ -70,12 +72,14 @@ import { MAIN_NAV, SUB_NAV } from '@src/constantes/mapsite.const';
                 class="flex items-center group-hover:text-ayllus-primary hover:text-ayllus-primary"
               >
                 {item.name}
-                <Arrow width={28} height={28} />
+                {item.sub_menu && item.sub_menu.length > 0 && (
+                  <Arrow width={28} height={28} />
+                )}
               </a>
-              <div class="absolute hidden group-hover:block bg-white shadow-lg py-2 w-48 z-10 left-1/2 transform -translate-x-1/2 rounded-xl">
-                {item.sub_menu &&
-                  item.sub_menu.length > 0 &&
-                  item.sub_menu.map((subItem, index) => (
+
+              {item.sub_menu && item.sub_menu.length > 0 && (
+                <div class="absolute hidden group-hover:block bg-white shadow-lg py-2 w-48 z-10 left-1/2 transform -translate-x-1/2 rounded-xl">
+                  {item.sub_menu.map((subItem, index) => (
                     <a
                       href={subItem.url}
                       class={`block px-4 py-2 text-gray-800 hover:bg-gray-200 ${index !== 0 && 'border-t-2 border-ayllus-primary'}`}
@@ -83,7 +87,8 @@ import { MAIN_NAV, SUB_NAV } from '@src/constantes/mapsite.const';
                       {subItem.name}
                     </a>
                   ))}
-              </div>
+                </div>
+              )}
             </li>
           ))
         }
@@ -98,12 +103,32 @@ import { MAIN_NAV, SUB_NAV } from '@src/constantes/mapsite.const';
   id="modal"
   class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center"
 >
-  <div class="bg-white p-8 shadow-lg w-full min-h-svh">
-    <h2 class="text-2xl mb-4">Modal Title</h2>
-    <p class="mb-4">This is a modal content.</p>
-    <button id="closeModal" class="bg-blue-500 text-white px-4 py-2 rounded"
-      >Close</button
-    >
+  <div class="bg-white p-8 shadow-lg w-full min-h-svh flex flex-col gap-2">
+    <div class="flex justify-between w-full mb-8">
+      <a href="/">
+        <img
+          src="/logo/isotipo_black.png"
+          alt="Isotipo"
+          id="isotipo"
+          width="60"
+          height="60"
+        />
+      </a>
+
+      <button id="closeModal" class="text-ayllus-secondary">
+        <Close width={50} height={50} />
+      </button>
+    </div>
+
+    {
+      MAIN_NAV.map((item) => (
+        <AcordionNavbar
+          title={item.name}
+          url={item.url}
+          subMenu={item.sub_menu}
+        />
+      ))
+    }
   </div>
 </div>
 

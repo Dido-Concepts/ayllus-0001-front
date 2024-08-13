@@ -1,16 +1,16 @@
 ---
-import CardTipoCredito from '@src/context/creditos/components/CardTipoCredito.component.astro'
-import type { CreditosInfosData } from '@src/context/creditos/interfaces/creditos'
+import CardProductCopac from '@src/components/CardProductCopac.component.astro'
+import type { ProductCopacInfosData } from '@src/interfaces/ProductCopac'
 import type { Image } from '@src/interfaces/Image'
 
 interface Props {
     title: string;
     descripcion: string;
     imagen: Image ;
-    creditos: CreditosInfosData[];
+    products: ProductCopacInfosData[];
 }
 
-const { title, descripcion, creditos, imagen } = Astro.props as Props;
+const { title, descripcion, products, imagen } = Astro.props as Props;
 ---
 
 <section class="my-12">
@@ -43,11 +43,11 @@ const { title, descripcion, creditos, imagen } = Astro.props as Props;
             class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 place-items-center mt-8"
         >
             {
-                creditos.map((credito) => (
-                    <CardTipoCredito
-                        title={credito.titulo}
-                        image={credito.imagen}
-                        slug={credito.slug}
+                products.map((product) => (
+                    <CardProductCopac
+                        title={product.titulo}
+                        image={product.imagen}
+                        link={product.link}
                     />
                 ))
             }

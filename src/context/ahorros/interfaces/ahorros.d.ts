@@ -1,4 +1,4 @@
-import type { MultimediaStrapi, Image } from '@src/interfaces/Image'
+import type { MultimediaStrapi } from '@src/interfaces/Image'
 
 export interface TipoAhorrosResponse {
     id: number;
@@ -32,17 +32,4 @@ export interface DatumAttributes {
     titulo: string;
     slug: string;
     imagen: MultimediaStrapi;
-}
-
-export interface TipoAhorrosData {
-    nombreTipo: string;
-    descripcion: string;
-    ahorrosInfos: AhorrosInfosData[];
-    imagenTipo: Image;
-}
-
-export interface AhorrosInfosData {
-    titulo: string;
-    imagen: Image;
-    slug: string;
 }

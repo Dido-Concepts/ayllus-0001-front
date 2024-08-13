@@ -1,7 +1,7 @@
-import type { InfoCreditoResponse } from '@src/context/creditos/interfaces/infoCredito'
+import type { InfoAhorroResponse } from '@src/context/ahorros/interfaces/infoAhorro'
 import type { InfoProductCopacData } from '@src/interfaces/ProductCopac'
 
-export function infoCreditoAdapter ({ data }: { data: InfoCreditoResponse[] }): InfoProductCopacData {
+export function infoAhorroAdapter ({ data }: { data: InfoAhorroResponse[] }): InfoProductCopacData {
   return {
     imagen: {
       url: data[0].attributes.imagen.data.attributes.url,
