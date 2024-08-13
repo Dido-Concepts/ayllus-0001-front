@@ -1,8 +1,9 @@
 import fetchApi from '@src/utils/strapi.util'
 import { infoCreditoAdapter } from '@src/context/creditos/adapters/infoCredito.adapter'
-import type { InfoCreditoData, InfoCreditoResponse } from '@src/context/creditos/interfaces/infoCredito'
+import type { InfoCreditoResponse } from '@src/context/creditos/interfaces/infoCredito'
+import type { InfoProductCopacData } from '@src/interfaces/ProductCopac'
 
-export async function infoCreditoService ({ slug }: { slug: string | undefined }): Promise<InfoCreditoData > {
+export async function infoCreditoService ({ slug }: { slug: string | undefined }): Promise<InfoProductCopacData > {
   if (!slug) throw new Error('No se proporcionó un slug.')
 
   const serverData: InfoCreditoResponse[] = await fetchApi({

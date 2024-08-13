@@ -1,6 +1,6 @@
 ---
 import type { InfoProductCopacData } from '@src/interfaces/ProductCopac'
-import { infoCreditoService } from '@src/context/creditos/services/infoCredito.service'
+import { infoAhorroService } from '@src/context/ahorros/services/infoAhorro.service'
 import Layout from '@src/layouts/Layout.astro'
 import HeaderPage from '@src/components/HeaderPage.component.astro'
 import ListaRequisitos from '@src/components/ListaRequisitos.component.astro'
@@ -11,7 +11,7 @@ const { slug } = Astro.params
 let credito: InfoProductCopacData
 
 try {
-  credito = await infoCreditoService({ slug })
+  credito = await infoAhorroService({ slug })
 } catch {
   return Astro.redirect('/')
 }

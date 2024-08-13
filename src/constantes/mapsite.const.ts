@@ -64,64 +64,14 @@ export const MAIN_NAV = [
   },
   {
     name: 'Transparencia',
-    url: '/transparencia',
-    sub_menu: [
-      {
-        name: 'Estados financieros',
-        url: '/transparencia'
-      },
-      {
-        name: 'Tarifarios',
-        url: '/transparencia'
-      },
-      {
-        name: 'Temorias anuales',
-        url: '/transparencia'
-      },
-      {
-        name: 'Alianzas estratégicas',
-        url: '/transparencia'
-      },
-      {
-        name: 'Documentos normativos',
-        url: '/transparencia'
-      }
-    ]
+    url: '/transparencia'
   },
   {
     name: 'Canales De Atenciόn',
-    url: '#',
-    sub_menu: [
-      {
-        name: 'Submenu Item 1',
-        url: '#'
-      },
-      {
-        name: 'Submenu Item 2',
-        url: '#'
-      },
-      {
-        name: 'Submenu Item 3',
-        url: '#'
-      }
-    ]
+    url: '/canales-atencion'
   },
   {
     name: 'Publicaciones',
-    url: '#',
-    sub_menu: [
-      {
-        name: 'Submenu Item 1',
-        url: '#'
-      },
-      {
-        name: 'Submenu Item 2',
-        url: '#'
-      },
-      {
-        name: 'Submenu Item 3',
-        url: '#'
-      }
-    ]
+    url: '/publicaciones'
   }
 ]

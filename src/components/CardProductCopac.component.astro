@@ -5,14 +5,14 @@ import type { Image as ImageProps } from '@src/interfaces/Image'
 interface Props {
   title: string;
   image: ImageProps;
-  slug: string;
+  link: string;
 }
 
-const { title, image, slug } = Astro.props as Props;
+const { title, image, link } = Astro.props as Props;
 ---
 
 <a
-  href={`/creditos/${slug}`}
+  href={link}
   class="relative flex flex-col justify-center overflow-hidden bg-gray-50 w-full sm:max-w-lg"
 >
   <div
