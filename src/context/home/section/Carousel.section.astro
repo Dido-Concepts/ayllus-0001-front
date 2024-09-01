@@ -11,27 +11,31 @@ const data = await carouselService();
         <div class="swiper-slide">
           {item.imagen.mime === 'video/mp4'
             ? (
-            <video
-              autoplay
-              muted
-              loop
-              playsinline
-              aria-label={item.descripcion}
-            >
-              <source src={item.imagen.url} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <a href={item.url}>
+              <video
+                autoplay
+                muted
+                loop
+                playsinline
+                aria-label={item.descripcion}
+              >
+                <source src={item.imagen.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </a>
               )
             : (
-            <Image
-              src={item.imagen.url}
-              alt={item.descripcion}
-              width={item.imagen.width}
-              height={item.imagen.height}
-              aria-label={item.descripcion}
-              decoding="async"
-              loading="eager"
-            />
+            <a href={item.url}>
+              <Image
+                src={item.imagen.url}
+                alt={item.descripcion}
+                width={item.imagen.width}
+                height={item.imagen.height}
+                aria-label={item.descripcion}
+                decoding="async"
+                loading="eager"
+              />
+            </a>
               )}
         </div>
       ))
@@ -89,7 +93,8 @@ swiper.init()
   }
 
   .swiper-slide video,
-  .swiper-slide img {
+  .swiper-slide img,
+  .swiper-slide a {
     width: 100%;
     height: 100%;
     object-fit: cover;

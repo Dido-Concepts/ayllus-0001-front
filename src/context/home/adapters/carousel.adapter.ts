@@ -10,6 +10,7 @@ export function carouselAdapter ({ data }: { data: any }): CarouselData[] {
       ? {
           id: item.id,
           descripcion: item.descripcion,
+          url: item.url,
           imagen: {
             extension: item.multimedia.data.attributes.ext,
             url: item.multimedia.data.attributes.url,

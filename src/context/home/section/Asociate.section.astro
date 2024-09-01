@@ -1,46 +1,47 @@
 ---
-const TEXT = [
-  'Accede a préstamos con bajos intereses',
-  'Depósitos a plazo fijo y ¡sin comisiones!',
-  'Incentivos y participa en sorteos.'
+const data = [
+  {
+    text: 'Accede a préstamos con bajos intereses',
+    imgUrl: '/home/asociate/1.webp'
+  },
+  {
+    text: 'Depósitos a plazo fijo y ¡sin comisiones!',
+    imgUrl: '/home/asociate/2.webp'
+  },
+  {
+    text: 'Incentivos y participa en sorteos',
+    imgUrl: '/home/asociate/3.webp'
+  }
 ];
 ---
 
-<section
-    class="py-20 bg-cover bg-center relative flex flex-col items-center gap-10"
-    style="background-image: url('/home/quienes_somos/asociatebg.webp');"
->
-    <div
-        class="absolute inset-0 bg-gradient-to-r from-[#670098] to-[#A77DBA] opacity-100 -z-10"
+<section class="py-20 flex flex-col items-center">
+    <h1
+        class="text-center w-full text-2xl md:text-3xl xl:text-6xl font-extrabold text-ayllus-secondary my-12"
     >
+        Asóciate
+    </h1>
+
+    <h3
+        class="text-center w-full text-xl md:text-2xl xl:text-3xl font-extrabold text-ayllus-primary mb-4"
+    >
+        Beneficios de ser socio
+    </h3>
+
+    <p class="text-center w-full font-medium text-lg md:text-xl mb-8 px-4 md:px-8">
+        ¿Buscas seguridad financiera y beneficios exclusivos?
+    </p>
+
+    <div class="max-w-screen-2xl flex flex-col md:flex-row gap-8 my-16 px-4 md:px-8">
+        {data.map((item) => (
+            <section class="flex flex-col md:flex-row items-center gap-4 border-2 border-ayllus-secondary rounded-xl py-6 px-4">
+                <p class="text-lg font-medium text-center md:text-left">{item.text}</p>
+                <img class="w-32 md:w-48 xl:w-64" src={item.imgUrl} alt={item.text} />
+            </section>
+        ))}
     </div>
 
-    <div class="w-11/12 md:w-8/12 lg:w-6/12  px-4">
-        <h1 class="text-white text-4xl md:text-6xl lg:text-8xl font-bold">
-            Asóciate
-        </h1>
-        <h2 class="text-white text-2xl md:text-4xl lg:text-6xl font-medium">
-            Beneficios de ser socio
-        </h2>
-        <p class="text-white text-xl md:text-2xl lg:text-3xl font-bold">
-            ¿Buscas seguridad financiera y beneficios exclusivos?
-        </p>
-    </div>
-
-    <ul class="flex flex-col md:flex-row gap-4 w-11/12 md:w-8/12 lg:w-6/12">
-        {
-            TEXT.map((text) => (
-                <li class="text-ayllus-secondary text-lg md:text-xl lg:text-2xl font-semibold bg-white p-6 md:p-8 lg:p-12 rounded-3xl">
-                    {text}
-                </li>
-            ))
-        }
-    </ul>
-
-    <a
-        href="/socios/asociate"
-        class="bg-white border-2 font-semibold hover:text-white hover:bg-ayllus-secondary text-ayllus-secondary max-w-fit px-4 md:px-6 lg:px-8 py-1 md:py-2 rounded-full"
-    >
+    <a href="/socios/asociate" class="bg-ayllus-primary text-white font-bold text-xl px-8 py-2 rounded-lg border-2 border-transparent hover:border-ayllus-primary hover:bg-white hover:text-ayllus-primary transition duration-300 ease-in-out">
         Conoce los requisitos aquí
     </a>
 </section>
