@@ -9,22 +9,21 @@ interface Props {
 }
 
 const { cargo, img, nombre } = Astro.props as Props;
-
 ---
 
-      <div class="bg-white w-80 rounded-2xl shadow-lg">
-        <ImageAstro
-          src={img.url}
-          alt={`${cargo} - ${nombre} - Ayllus Peru`}
-          class="w-100% h-64 object-cover rounded-tl-2xl rounded-tr-2xl"
-          width={img.width}
-          height={img.height}
-        />
-        <div class="p-4">
-          <h2 class="text-xl font-semibold text-gray-800">
-            {cargo}
-          </h2>
-          <hr class="w-full border-t border-ayllus-primary my-2" />
-          <p class="text-gray-600">{nombre}</p>
-        </div>
-      </div>
+<div class="bg-white w-80 rounded-2xl shadow-lg">
+  <ImageAstro
+    src={img.url}
+    alt={`${cargo} - ${nombre} - Ayllus Peru`}
+    class="w-100% h-64 object-cover rounded-tl-2xl rounded-tr-2xl"
+    width={img.width}
+    height={img.height}
+  />
+  <div class="p-4">
+    <h2 class="text-xl font-semibold text-gray-800">
+      {cargo}
+    </h2>
+    <hr class="w-full border-t border-ayllus-primary my-2" />
+    <p class="text-gray-600">{nombre}</p>
+  </div>
+</div>

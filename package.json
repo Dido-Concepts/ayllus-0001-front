@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "eslint 'src/**/*.{js,ts,astro}'"
   },
   "dependencies": {
     "@alpinejs/intersect": "^3.14.1",

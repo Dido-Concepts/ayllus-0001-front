@@ -1,0 +1,110 @@
+---
+import { publicacionDestacadoService } from '@src/context/publicaciones/services/publicacionDestacado.service'
+import CardDestacado from '../components/CardDestacado.component.astro'
+
+const data = await publicacionDestacadoService()
+---
+
+<section class="max-w-screen-2xl mx-4 md:mx-auto rounded-xl overflow-hidden">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            {
+                data.map((item) => (
+                    <div class="swiper-slide">
+                        <CardDestacado
+                            title={item.titulo}
+                            description={item.descripcion}
+                            cover={item.imagen}
+                            slug={item.slug}
+                        />
+                    </div>
+                ))
+            }
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<script>
+import Swiper from 'swiper'
+import { Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+
+const swiper = new Swiper('.mySwiper', {
+  modules: [Pagination, Autoplay],
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true
+  },
+  //   autoplay: {
+  //     delay: 20000
+  //   },
+  slidesPerView: 1,
+  spaceBetween: 10,
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 40
+    },
+    1024: {
+      slidesPerView: 1,
+      spaceBetween: 50
+    }
+  }
+})
+
+swiper.init()
+</script>
+
+<style>
+    .swiper {
+        width: 100%;
+        height: 70vh;
+    }
+
+    @media (max-width: 768px) {
+        .swiper {
+            height: 60vh;
+        }
+    }
+
+    .swiper-slide video,
+    .swiper-slide img,
+    .swiper-slide a {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #f1eeee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<style is:global>
+    .swiper-pagination-bullet {
+        width: 20px !important;
+        height: 20px !important;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        color: #000;
+        opacity: 1 !important;
+        background: #c0c4ca !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        color: #fff;
+        background: #7406a7 !important;
+    }
+</style>
