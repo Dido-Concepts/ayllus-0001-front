@@ -27,6 +27,7 @@ if (title) {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{titleLayout}</title>
+		<slot name="head" />
 	</head>
 	<body class="relative">
 		<Navbar />
