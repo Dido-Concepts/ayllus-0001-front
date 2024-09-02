@@ -1,0 +1,27 @@
+---
+import { publicacionCoverService } from '@src/context/publicaciones/services/publicacionCover.service'
+import CardPublicacion from '../components/CardPublicacion.component.astro'
+
+const data = await publicacionCoverService()
+---
+
+<section class="max-w-screen-2xl mx-auto py-10">
+    <h1 class="text-ayllus-secondary text-2xl lg:text-4xl font-bold my-14 text-center lg:text-left">
+        Noticias recientes
+    </h1>
+
+    <div
+        class="grid gap-4 auto-rows-[28rem] grid-cols-[repeat(auto-fill,minmax(30rem,1fr))]"
+    >
+        {
+            data.map((item) => (
+                <CardPublicacion
+                    cover={item.imagen}
+                    title={item.titulo}
+                    description={item.descripcion}
+                    slug={item.slug}
+                />
+            ))
+        }
+    </div>
+</section>
